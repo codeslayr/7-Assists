@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
+import 'package:seven_assists/screens/web_view/about_us_view_web.dart';
+import 'package:seven_assists/screens/web_view/contact_us_view_web.dart';
+import 'package:seven_assists/screens/web_view/empower_view_web.dart';
+import 'package:seven_assists/screens/web_view/footer_view_web.dart';
 import 'package:seven_assists/screens/web_view/home_veiw_web.dart';
+import 'package:seven_assists/screens/web_view/portfolio_view_web.dart';
 
 class ParentViewWeb extends StatefulWidget {
   const ParentViewWeb({super.key});
@@ -23,7 +29,7 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                   handle:
                       NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                   sliver: SliverAppBar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: WhitebackgroundCustomcolor,
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -35,8 +41,8 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.4,
-                          child: const TabBar(
-                            dividerColor: Colors.grey,
+                          child: TabBar(
+                            dividerColor: WhitebackgroundCustomcolor,
                             indicatorColor: Colors.black,
                             labelColor: Colors.blue,
                             unselectedLabelColor: Colors.black,
@@ -101,11 +107,16 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                 ListView(
                   children: const [
                     HomeVeiwWeb(),
+                    EmpowerViewWeb(),
+                    PortfolioViewWeb(),
+                    AboutUsViewWeb(),
+                    ContactUsViewWeb(),
+                    FooterViewWeb()
                   ],
                 ),
                 ListView(
                   children: const [
-                    HomeVeiwWeb(),
+                    PortfolioViewWeb(),
                   ],
                 ),
                 ListView(

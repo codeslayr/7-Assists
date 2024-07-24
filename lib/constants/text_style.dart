@@ -7,10 +7,16 @@ const TextStyle kMainHeadingTextStyle = TextStyle(
     fontWeight: FontWeight.w600);
 
 const TextStyle kSectionHeadingTextStyle = TextStyle(
-    fontSize: 24,
+    fontSize: 50,
     fontFamily: 'Relative',
     color: Colors.black,
-    fontWeight: FontWeight.w700);
+    fontWeight: FontWeight.w600);
+
+const TextStyle mSectionHeadingTextStyle = TextStyle(
+    fontSize: 40,
+    fontFamily: 'Relative',
+    color: Colors.black,
+    fontWeight: FontWeight.w600);
 
 const TextStyle kSectionSubheadingTextStyle = TextStyle(
     fontSize: 16,

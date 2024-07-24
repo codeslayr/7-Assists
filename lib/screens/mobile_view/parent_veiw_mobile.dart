@@ -1,5 +1,11 @@
-// import 'package:fc/constants/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:seven_assists/constants/custom_color.dart';
+import 'package:seven_assists/constants/text_style.dart';
+import 'package:seven_assists/screens/mobile_view/contact_us_view_mobile.dart';
+import 'package:seven_assists/screens/mobile_view/empower_veiw_mobile.dart';
+import 'package:seven_assists/screens/mobile_view/footer_view_mobile.dart';
+import 'package:seven_assists/screens/mobile_view/home_veiw_mobile.dart';
+import 'package:seven_assists/screens/mobile_view/portfolio_view_mobile.dart';
 
 class ParentViewMobile extends StatefulWidget {
   const ParentViewMobile({super.key});
@@ -13,14 +19,25 @@ class _ParentViewMobileState extends State<ParentViewMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Parent View Mobile'),
+        backgroundColor: WhitebackgroundCustomcolor,
+        title: Text(
+          '7 ASSISTS',
+          style: kMainHeadingTextStyle,
+          textAlign: TextAlign.center,
+        ),
+        centerTitle: true, // Center the title
+        elevation: 0, // Remove the shadow under the AppBar
+        surfaceTintColor: WhitebackgroundCustomcolor,
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Text(
-            'Parent View Mobile',
-            // style: kSectionHeadingTextStyle,
-          ),
+          const HomeViewMobile(),
+          const EmpowerViewMobile(),
+          const PortfolioViewMobile(),
+          // AboutUsViewMobile(),
+          const ContactUsViewMobile(),
+          const FooterViewMobile(),
+          // Add more pages here
         ],
       ),
     );
