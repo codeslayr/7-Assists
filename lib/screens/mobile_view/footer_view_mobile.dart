@@ -80,6 +80,7 @@ class FooterViewMobile extends StatelessWidget {
           child: Text(
             "7 ASSISTS",
             style: kSectionHeadingTextStyle.copyWith(
+              letterSpacing: -7,
               fontSize: 85,
               color: Colors
                   .white, // The color here is irrelevant because the gradient will override it

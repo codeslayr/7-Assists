@@ -42,8 +42,18 @@ class _ContactUsViewMobileState extends State<ContactUsViewMobile> {
                 child: Marquee(
                   text: 'Contact Us 🌐 ',
                   style: kMainHeadingTextStyle.copyWith(
-                      fontSize: 100, color: Colors.white),
+                      letterSpacing: -6,
+                      shadows: [
+                        Shadow(
+                          offset: Offset(3.0, 3.0),
+                          blurRadius: 3.0,
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ],
+                      fontSize: 100,
+                      color: Colors.white),
                   scrollAxis: Axis.horizontal,
+
                   crossAxisAlignment: CrossAxisAlignment.start,
                   velocity: 100.0, // Speed of scrolling
                 ),
@@ -55,7 +65,9 @@ class _ContactUsViewMobileState extends State<ContactUsViewMobile> {
               child: Text(
                 "Every Club wants to present their best side on social media. Let’s help you do that in the best way possible.",
                 style: mSectionHeadingTextStyle.copyWith(
-                    fontWeight: FontWeight.w500, fontSize: 39),
+                    letterSpacing: -1,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 39),
                 textAlign: TextAlign.start,
               ),
             ),

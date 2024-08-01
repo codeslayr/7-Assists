@@ -10,7 +10,7 @@ class HomeViewMobile extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      padding: EdgeInsets.only(top: screenHeight / 20),
+      padding: EdgeInsets.only(top: screenHeight / 80),
       width: screenWidth,
       // height: screenHeight,
       color: WhitebackgroundCustomcolor,
@@ -28,7 +28,7 @@ class HomeViewMobile extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 300,
+            top: 320,
             child: Image.asset(
               'assets/images/bg.png',
               fit: BoxFit.cover,
@@ -50,7 +50,8 @@ class HomeViewMobile extends StatelessWidget {
                     children: [
                       RichText(
                         text: TextSpan(
-                          style: mSectionHeadingTextStyle,
+                          style: mSectionHeadingTextStyle.copyWith(
+                              letterSpacing: -2, height: -1),
                           children: [
                             TextSpan(text: "Improving Football"),
                             WidgetSpan(

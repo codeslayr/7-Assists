@@ -46,7 +46,9 @@ class _PortfolioViewMobileState extends State<PortfolioViewMobile> {
                   Text(
                     "Portfolio",
                     style: mSectionHeadingTextStyle.copyWith(
-                        color: Colors.grey.shade400, fontSize: 70),
+                        letterSpacing: -4,
+                        color: Colors.grey.shade400,
+                        fontSize: 70),
                   ),
                 ],
               ),
@@ -109,6 +111,7 @@ class _PortfolioViewMobileState extends State<PortfolioViewMobile> {
                               Text(
                                 "Design Portfolio",
                                 style: kSectionSubheadingTextStyle.copyWith(
+                                  letterSpacing: -1,
                                   color: Colors.white,
                                   fontSize: 40,
                                 ),

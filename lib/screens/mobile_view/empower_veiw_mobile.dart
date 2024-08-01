@@ -34,7 +34,9 @@ class EmpowerViewMobile extends StatelessWidget {
                     Text(
                       "Empower",
                       style: kSectionHeadingTextStyle.copyWith(
-                          color: Colors.grey.shade400, fontSize: 70),
+                          letterSpacing: -4,
+                          color: Colors.grey.shade400,
+                          fontSize: 70),
                     )
                   ],
                 ),
@@ -48,7 +50,9 @@ class EmpowerViewMobile extends StatelessWidget {
                   'Solutions that Fit Your Budget and Needs. We understand the challenges faced by tier 3 or low-level clubs with limited resources. Our website development and social media post designing service is tailored to address your pain points while ensuring affordability and quality. With us, you can enhance your online presence without breaking the bank.',
                   textAlign: TextAlign.start,
                   style: kSectionSubheadingTextStyle.copyWith(
-                      fontSize: 28, fontWeight: FontWeight.w400),
+                      letterSpacing: -1,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w400),
                 ),
               ),
               SizedBox(
@@ -91,6 +95,9 @@ class EmpowerViewMobile extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: screenHeight / 40,
                   ),
                   Image.asset("assets/images/website2.png"),
                 ],

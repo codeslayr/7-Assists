@@ -49,7 +49,9 @@ class EmpowerViewWeb extends StatelessWidget {
                   'Solutions that Fit Your Budget and Needs. We understand the challenges faced by tier 3 or low-level clubs with limited resources. Our website development and social media post designing service is tailored to address your pain points while ensuring affordability and quality. With us, you can enhance your online presence without breaking the bank.',
                   textAlign: TextAlign.justify,
                   style: kSectionSubheadingTextStyle.copyWith(
-                      fontSize: 30, fontWeight: FontWeight.w400),
+                      letterSpacing: -2,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w400),
                 ),
               ),
               SizedBox(

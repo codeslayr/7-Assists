@@ -25,10 +25,10 @@ class FooterViewWeb extends StatelessWidget {
             color: WhitebackgroundCustomcolor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildMainColumn(context),
@@ -79,6 +79,7 @@ Widget _buildMainColumn(BuildContext context) {
             "7 ASSISTS",
             style: kSectionHeadingTextStyle.copyWith(
                 fontSize: 175,
+                letterSpacing: -12,
                 color: Colors
                     .white // The color here is irrelevant because the gradient will override it
                 ),
@@ -127,12 +128,11 @@ Widget _buildLinkColumn(
   final double screenHeight = MediaQuery.of(context).size.height;
 
   return Expanded(
-    // flex: 1,
     child: Padding(
-      padding: const EdgeInsets.only(top: 60),
+      padding: const EdgeInsets.only(top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             heading,

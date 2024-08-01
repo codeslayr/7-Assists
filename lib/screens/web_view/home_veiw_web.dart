@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
 
@@ -17,14 +18,13 @@ class HomeVeiwWeb extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              top: 83,
-              left: 25,
-              height: 180,
-              width: 170,
+              top: 90,
+              left: 70,
+              height: 80,
+              width: 80,
               child: Image.asset(
                 'assets/images/rectangle.png',
                 fit: BoxFit.cover,
-                // Adjust blend mode as needed
               ),
             ),
             Positioned(
@@ -32,10 +32,8 @@ class HomeVeiwWeb extends StatelessWidget {
               child: Image.asset(
                 'assets/images/bg.png',
                 fit: BoxFit.cover,
-                // Adjust blend mode as needed
               ),
             ),
-            // Other texts and images
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -69,8 +67,7 @@ class HomeVeiwWeb extends StatelessWidget {
                                   child: Text(
                                     "Online Presence",
                                     style: kSectionHeadingTextStyle.copyWith(
-                                      color: Colors
-                                          .white, // Set the text color to white
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),
@@ -81,10 +78,10 @@ class HomeVeiwWeb extends StatelessWidget {
                         ),
                         SizedBox(height: screenHeight / 40),
                         Text(
-                            "Weekly scheduled post designs, maintinaed professional website to help you be the best in your league!",
-                            style: kSectionSubheadingTextStyle),
+                          "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
+                          style: kSectionSubheadingTextStyle,
+                        ),
                         SizedBox(height: screenHeight / 60),
-                        // Add other widgets as needed
                         Container(
                           decoration: BoxDecoration(
                             color: Colors.black,
@@ -111,13 +108,44 @@ class HomeVeiwWeb extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  child: Image.asset("assets/images/showcase.png"),
-                )
+                  // width: screenWidth * 0.4,
+                  height: screenHeight * 0.8,
+                  child: LazyLottie(),
+                ),
               ],
             ),
           ],
         ),
       ),
     );
+  }
+}
+
+class LazyLottie extends StatefulWidget {
+  @override
+  _LazyLottieState createState() => _LazyLottieState();
+}
+
+class _LazyLottieState extends State<LazyLottie> {
+  bool _isVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _isVisible = true;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _isVisible
+        ? Lottie.asset(
+            'assets/images/fotos1.json',
+            fit: BoxFit.contain,
+          )
+        : Container();
   }
 }
