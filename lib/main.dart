@@ -1,8 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_assists/views/parent_view.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyDHrrz9WnvIuXnCOGz5MXcKj6GCAZEJMfs",
+        authDomain: "assists-7b21f.firebaseapp.com",
+        projectId: "assists-7b21f",
+        storageBucket: "assists-7b21f.appspot.com",
+        messagingSenderId: "807661337630",
+        appId: "1:807661337630:web:fd4cac3c60c74075cc820f"),
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

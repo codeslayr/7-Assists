@@ -10,7 +10,7 @@ const TextStyle kSectionHeadingTextStyle = TextStyle(
     fontSize: 50,
     fontFamily: 'Relative',
     letterSpacing: -3,
-    height: 1,
+    height: 1.1,
     color: Colors.black,
     fontWeight: FontWeight.w600);
 

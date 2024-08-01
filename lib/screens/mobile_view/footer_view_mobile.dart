@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
 
@@ -25,7 +26,6 @@ class FooterViewMobile extends StatelessWidget {
                 horizontal: screenWidth / 40, vertical: screenHeight / 20),
             color: WhitebackgroundCustomcolor,
             width: screenWidth,
-            // height: screenHeight,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -47,9 +47,14 @@ class FooterViewMobile extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _buildSocialIcon("assets/images/facebook.svg"),
-                        _buildSocialIcon("assets/images/instagram.svg"),
-                        _buildSocialIcon("assets/images/linkedin.svg"),
+                        _buildSocialIcon(
+                            "assets/images/X.svg", "https://x.com/7assists"),
+                        _buildSocialIcon("assets/images/facebook.svg",
+                            "https://www.facebook.com/7assists/"),
+                        _buildSocialIcon("assets/images/instagram.svg",
+                            "https://www.instagram.com/7assists/"),
+                        _buildSocialIcon("assets/images/linkedin.svg",
+                            "https://www.linkedin.com/company/7assists"),
                       ],
                     ),
                     SizedBox(height: screenHeight / 60),
@@ -82,8 +87,7 @@ class FooterViewMobile extends StatelessWidget {
             style: kSectionHeadingTextStyle.copyWith(
               letterSpacing: -7,
               fontSize: 85,
-              color: Colors
-                  .white, // The color here is irrelevant because the gradient will override it
+              color: Colors.white,
             ),
           ),
         ),
@@ -91,16 +95,26 @@ class FooterViewMobile extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialIcon(String assetPath) {
+  Widget _buildSocialIcon(String assetPath, String url) {
     return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: SvgPicture.asset(
-        assetPath,
-        height: 20,
-        width: 20,
-        color: Colors.black,
+      padding: const EdgeInsets.only(right: 12.0),
+      child: InkWell(
+        onTap: () => _launchURL(url),
+        child: SvgPicture.asset(
+          assetPath,
+          height: 15,
+          width: 15,
+        ),
       ),
     );
+  }
+
+  Future<void> _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   Widget _buildCopyright(BuildContext context, String copyright) {

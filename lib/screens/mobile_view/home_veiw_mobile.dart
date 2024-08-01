@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
 
@@ -12,7 +13,6 @@ class HomeViewMobile extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: screenHeight / 80),
       width: screenWidth,
-      // height: screenHeight,
       color: WhitebackgroundCustomcolor,
       child: Stack(
         children: [
@@ -24,7 +24,6 @@ class HomeViewMobile extends StatelessWidget {
             child: Image.asset(
               'assets/images/rectangle.png',
               fit: BoxFit.cover,
-              // Adjust blend mode as needed
             ),
           ),
           Positioned(
@@ -32,15 +31,13 @@ class HomeViewMobile extends StatelessWidget {
             child: Image.asset(
               'assets/images/bg.png',
               fit: BoxFit.cover,
-              // Adjust blend mode as needed
             ),
           ),
-          // Other texts and images
           Column(
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    left: screenWidth / 14, bottom: screenHeight / 8),
+                    left: screenWidth / 14, bottom: screenHeight / 20),
                 child: Container(
                   width: 700,
                   height: 500,
@@ -69,8 +66,7 @@ class HomeViewMobile extends StatelessWidget {
                                 child: Text(
                                   "Clubs Online Presence",
                                   style: mSectionHeadingTextStyle.copyWith(
-                                    color: Colors
-                                        .white, // Set the text color to white
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),
@@ -80,8 +76,6 @@ class HomeViewMobile extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: screenHeight / 40),
-
-                      // Add other widgets as needed
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.black,
@@ -102,8 +96,14 @@ class HomeViewMobile extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                child: Image.asset("assets/images/showcase.png"),
+              // Replace the image with Lottie animation
+              SizedBox(
+                height: screenHeight * 0.8,
+                width: double.infinity, // Adjust the height as needed
+                child: Lottie.asset(
+                  'assets/images/fotos1.json', // Update this path with your Lottie file
+                  fit: BoxFit.contain,
+                ),
               ),
             ],
           ),

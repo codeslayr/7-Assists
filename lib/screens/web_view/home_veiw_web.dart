@@ -19,7 +19,7 @@ class HomeVeiwWeb extends StatelessWidget {
           children: [
             Positioned(
               top: 90,
-              left: 70,
+              left: 68,
               height: 80,
               width: 80,
               child: Image.asset(
@@ -28,7 +28,7 @@ class HomeVeiwWeb extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 450,
+              top: 400,
               child: Image.asset(
                 'assets/images/bg.png',
                 fit: BoxFit.cover,

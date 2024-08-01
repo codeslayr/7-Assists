@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FooterViewWeb extends StatelessWidget {
   const FooterViewWeb({super.key});
@@ -28,7 +29,6 @@ class FooterViewWeb extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildMainColumn(context),
@@ -78,11 +78,11 @@ Widget _buildMainColumn(BuildContext context) {
           child: Text(
             "7 ASSISTS",
             style: kSectionHeadingTextStyle.copyWith(
-                fontSize: 175,
-                letterSpacing: -12,
-                color: Colors
-                    .white // The color here is irrelevant because the gradient will override it
-                ),
+              fontSize: 175,
+              letterSpacing: -12,
+              color: Colors
+                  .white, // The color here is irrelevant because the gradient will override it
+            ),
           ),
         ),
         SizedBox(height: screenHeight / 14),
@@ -92,9 +92,14 @@ Widget _buildMainColumn(BuildContext context) {
             _buildCopyright(context, "© 2024 7 Assists. All rights reserved."),
             Row(
               children: [
-                _buildSocialIcon("assets/images/facebook.svg"),
-                _buildSocialIcon("assets/images/instagram.svg"),
-                _buildSocialIcon("assets/images/linkedin.svg"),
+                _buildSocialIcon(
+                    "assets/images/X.svg", "https://x.com/7assists"),
+                _buildSocialIcon("assets/images/facebook.svg",
+                    "https://www.facebook.com/7assists/"),
+                _buildSocialIcon("assets/images/instagram.svg",
+                    "https://www.instagram.com/7assists/"),
+                _buildSocialIcon("assets/images/linkedin.svg",
+                    "https://www.linkedin.com/company/7assists"),
               ],
             ),
           ],
@@ -104,23 +109,33 @@ Widget _buildMainColumn(BuildContext context) {
   );
 }
 
-Widget _buildSocialIcon(String assetPath) {
-  return Padding(
-    padding: const EdgeInsets.only(right: 8.0),
-    child: SvgPicture.asset(
-      assetPath,
-      height: 20,
-      width: 20,
-      color: Colors.black,
+Widget _buildSocialIcon(String assetPath, String url) {
+  return InkWell(
+    onTap: () async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    },
+    child: Padding(
+      padding: const EdgeInsets.only(right: 12.0),
+      child: SvgPicture.asset(
+        assetPath,
+        height: 15,
+        width: 15,
+      ),
     ),
   );
 }
 
 Widget _buildCopyright(BuildContext context, String copyright) {
-  return Text(copyright,
-      style: kSectionSubheadingTextStyle.copyWith(
-        fontSize: 14,
-      ));
+  return Text(
+    copyright,
+    style: kSectionSubheadingTextStyle.copyWith(
+      fontSize: 14,
+    ),
+  );
 }
 
 Widget _buildLinkColumn(

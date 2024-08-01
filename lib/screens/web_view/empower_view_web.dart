@@ -63,10 +63,10 @@ class EmpowerViewWeb extends StatelessWidget {
                     child: Stack(
                       children: [
                         Positioned(
-                          right: 480,
-                          bottom: 120,
-                          height: 180,
-                          width: 170,
+                          right: 530,
+                          bottom: 130,
+                          height: 90,
+                          width: 90,
                           child: Image.asset(
                             "assets/images/rectangle.png",
                           ),
@@ -111,10 +111,10 @@ class EmpowerViewWeb extends StatelessWidget {
                     child: Stack(
                       children: [
                         Positioned(
-                          right: 480,
-                          bottom: 120,
-                          height: 180,
-                          width: 170,
+                          right: 530,
+                          bottom: 130,
+                          height: 90,
+                          width: 90,
                           child: Image.asset(
                             "assets/images/rectangle.png",
                           ),
