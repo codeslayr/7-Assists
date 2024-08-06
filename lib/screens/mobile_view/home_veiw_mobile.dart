@@ -1,10 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
+import 'package:video_player/video_player.dart';
 
-class HomeViewMobile extends StatelessWidget {
+class HomeViewMobile extends StatefulWidget {
   const HomeViewMobile({super.key});
+
+  @override
+  _HomeViewMobileState createState() => _HomeViewMobileState();
+}
+
+class _HomeViewMobileState extends State<HomeViewMobile> {
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset('assets/images/fotos2.mp4');
+    _initializeVideoPlayerFuture = _controller.initialize().then((_) {
+      setState(
+          () {}); // Ensure the first frame is shown after the video is initialized
+      _controller.play(); // Start playing the video automatically
+    });
+    _controller.setLooping(true); // Loop the video
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +63,7 @@ class HomeViewMobile extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    left: screenWidth / 14, bottom: screenHeight / 20),
+                    left: screenWidth / 14, bottom: screenHeight / 8),
                 child: Container(
                   width: 700,
                   height: 500,
@@ -96,14 +122,18 @@ class HomeViewMobile extends StatelessWidget {
                   ),
                 ),
               ),
-              // Replace the image with Lottie animation
-              SizedBox(
-                height: screenHeight * 0.8,
-                width: double.infinity, // Adjust the height as needed
-                child: Lottie.asset(
-                  'assets/images/fotos1.json', // Update this path with your Lottie file
-                  fit: BoxFit.contain,
-                ),
+              FutureBuilder(
+                future: _initializeVideoPlayerFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                },
               ),
             ],
           ),

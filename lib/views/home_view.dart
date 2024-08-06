@@ -16,9 +16,9 @@ class _HomeViewState extends State<HomeView> {
       if (constraints.maxWidth < 600) {
         return HomeViewMobile();
       } else if (constraints.maxWidth < 900) {
-        return HomeVeiwWeb();
+        return HomeViewWeb();
       } else {
-        return HomeVeiwWeb();
+        return HomeViewWeb();
       }
     });
   }

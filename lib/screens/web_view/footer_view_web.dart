@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,6 +29,7 @@ class FooterViewWeb extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildMainColumn(context),
@@ -78,11 +79,11 @@ Widget _buildMainColumn(BuildContext context) {
           child: Text(
             "7 ASSISTS",
             style: kSectionHeadingTextStyle.copyWith(
-              fontSize: 175,
-              letterSpacing: -12,
-              color: Colors
-                  .white, // The color here is irrelevant because the gradient will override it
-            ),
+                fontSize: 175,
+                letterSpacing: -12,
+                color: Colors
+                    .white // The color here is irrelevant because the gradient will override it
+                ),
           ),
         ),
         SizedBox(height: screenHeight / 14),
@@ -130,12 +131,10 @@ Widget _buildSocialIcon(String assetPath, String url) {
 }
 
 Widget _buildCopyright(BuildContext context, String copyright) {
-  return Text(
-    copyright,
-    style: kSectionSubheadingTextStyle.copyWith(
-      fontSize: 14,
-    ),
-  );
+  return Text(copyright,
+      style: kSectionSubheadingTextStyle.copyWith(
+        fontSize: 14,
+      ));
 }
 
 Widget _buildLinkColumn(

@@ -3,8 +3,8 @@ import 'package:lottie/lottie.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
 
-class HomeVeiwWeb extends StatelessWidget {
-  const HomeVeiwWeb({super.key});
+class HomeViewWeb extends StatelessWidget {
+  const HomeViewWeb({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,8 @@ class HomeVeiwWeb extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              top: 90,
-              left: 68,
+              top: 130,
+              left: 70,
               height: 80,
               width: 80,
               child: Image.asset(
@@ -109,7 +109,7 @@ class HomeVeiwWeb extends StatelessWidget {
                 ),
                 Container(
                   // width: screenWidth * 0.4,
-                  height: screenHeight * 0.8,
+                  height: screenHeight * 0.9,
                   child: LazyLottie(),
                 ),
               ],

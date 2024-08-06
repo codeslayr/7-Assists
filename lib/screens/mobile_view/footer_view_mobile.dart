@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FooterViewMobile extends StatelessWidget {
   const FooterViewMobile({super.key});
@@ -26,6 +26,7 @@ class FooterViewMobile extends StatelessWidget {
                 horizontal: screenWidth / 40, vertical: screenHeight / 20),
             color: WhitebackgroundCustomcolor,
             width: screenWidth,
+            // height: screenHeight,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -87,7 +88,8 @@ class FooterViewMobile extends StatelessWidget {
             style: kSectionHeadingTextStyle.copyWith(
               letterSpacing: -7,
               fontSize: 85,
-              color: Colors.white,
+              color: Colors
+                  .white, // The color here is irrelevant because the gradient will override it
             ),
           ),
         ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:marquee/marquee.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // Import the flutter_svg package
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
 
@@ -14,52 +15,6 @@ class ContactUsViewWeb extends StatefulWidget {
 
 class _ContactUsViewWebState extends State<ContactUsViewWeb> {
   final _formKey = GlobalKey<FormState>();
-  final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _messageController = TextEditingController();
-
-  Future<void> _submitForm() async {
-    if (_formKey.currentState?.validate() ?? false) {
-      try {
-        await FirebaseFirestore.instance.collection('contacts').add({
-          'firstName': _firstNameController.text,
-          'lastName': _lastNameController.text,
-          'email': _emailController.text,
-          'phone': _phoneController.text,
-          'message': _messageController.text,
-          'timestamp': FieldValue.serverTimestamp(),
-        });
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Form submitted successfully!',
-              style: kRegularTextStyle,
-            ),
-            backgroundColor: Colors.greenAccent.withOpacity(0.8),
-          ),
-        );
-
-        _firstNameController.clear();
-        _lastNameController.clear();
-        _emailController.clear();
-        _phoneController.clear();
-        _messageController.clear();
-      } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Failed to submit form: $e',
-              style: kRegularTextStyle,
-            ),
-            backgroundColor: Colors.redAccent.withOpacity(0.8),
-          ),
-        );
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,20 +29,20 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
           child: Column(
             children: [
               Container(
-                width: double.infinity,
+                width: double.infinity, // Ensure the container takes full width
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color(0xFFFF7448),
-                      Color(0xFFFF4848),
-                      Color(0xFF6248FF),
+                      Color(0xFFFF7448), // First color
+                      Color(0xFFFF4848), // Second color
+                      Color(0xFF6248FF), // Third color
                     ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                    begin: Alignment.topLeft, // Start of the gradient
+                    end: Alignment.bottomRight, // End of the gradient
                   ),
                 ),
                 child: SizedBox(
-                  height: 140,
+                  height: 140, // Fixed height for the Marquee widget
                   child: Marquee(
                     text: 'Contact Us 🌐 ',
                     style: kMainHeadingTextStyle.copyWith(
@@ -104,13 +59,15 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                     ),
                     scrollAxis: Axis.horizontal,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    velocity: 100.0,
+                    velocity: 100.0, // Speed of scrolling
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight / 10),
+              SizedBox(
+                height: screenHeight / 10,
+              ),
               Container(
-                padding: EdgeInsets.only(left: 24, bottom: 24, top: 24),
+                padding: EdgeInsets.only(top: 12, bottom: 12, left: 12),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
@@ -128,7 +85,7 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                     Expanded(
                       flex: 2,
                       child: Padding(
-                        padding: EdgeInsets.all(12),
+                        padding: EdgeInsets.only(top: 12, bottom: 12, left: 12),
                         child: Form(
                           key: _formKey,
                           child: Column(
@@ -138,43 +95,41 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                               Text(
                                 "Let’s connect!",
                                 style: kSectionSubheadingTextStyle.copyWith(
-                                  letterSpacing: -2,
-                                  fontSize: 50,
-                                ),
+                                    letterSpacing: -2, fontSize: 50),
                               ),
                               Text(
-                                "Ready to transform your club image? Fill out the form below and let’s get started on making your club stand out.",
-                                style: kRegularTextStyle,
+                                  "Ready to transform your club image? Fill out the form below and let’s get started on making your club stand out.",
+                                  style: kRegularTextStyle),
+                              SizedBox(
+                                height: 20,
                               ),
-                              SizedBox(height: 20),
                               Row(
                                 children: [
                                   Expanded(
                                     child: TextFormField(
-                                      controller: _firstNameController,
-                                      style: kRegularTextStyle,
-                                      cursorColor: Colors.black,
                                       decoration: InputDecoration(
                                         filled: true,
                                         fillColor: Colors.grey[200],
                                         labelText: 'First Name',
                                         labelStyle: kRegularTextStyle,
                                         floatingLabelBehavior:
-                                            FloatingLabelBehavior.never,
+                                            FloatingLabelBehavior
+                                                .never, // Label does not float
                                         border: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.grey),
+                                          borderSide: BorderSide(
+                                            color: Colors.grey,
+                                          ),
                                         ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.grey),
+                                          borderSide: BorderSide(
+                                            color: Colors.grey,
+                                          ),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.grey),
+                                          borderSide: BorderSide(
+                                            color: Colors.grey,
+                                          ),
                                         ),
-                                        errorStyle: kRegularTextStyle.copyWith(
-                                            color: Colors.red),
                                       ),
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
@@ -187,30 +142,29 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                                   SizedBox(width: 16),
                                   Expanded(
                                     child: TextFormField(
-                                      controller: _lastNameController,
-                                      cursorColor: Colors.black,
-                                      style: kRegularTextStyle,
                                       decoration: InputDecoration(
                                         filled: true,
                                         fillColor: Colors.grey[200],
                                         labelText: 'Last Name',
                                         labelStyle: kRegularTextStyle,
                                         floatingLabelBehavior:
-                                            FloatingLabelBehavior.never,
+                                            FloatingLabelBehavior
+                                                .never, // Label does not float
                                         border: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.grey),
+                                          borderSide: BorderSide(
+                                            color: Colors.grey,
+                                          ),
                                         ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.grey),
+                                          borderSide: BorderSide(
+                                            color: Colors.grey,
+                                          ),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.grey),
+                                          borderSide: BorderSide(
+                                            color: Colors.grey,
+                                          ),
                                         ),
-                                        errorStyle: kRegularTextStyle.copyWith(
-                                            color: Colors.red),
                                       ),
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
@@ -224,9 +178,6 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                               ),
                               SizedBox(height: 16),
                               TextFormField(
-                                controller: _emailController,
-                                cursorColor: Colors.black,
-                                style: kRegularTextStyle,
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -236,19 +187,23 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                                       'Your best email, so we can get in touch',
                                   hintStyle: kRegularTextStyle.copyWith(
                                       color: Colors.grey.shade700),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
+                                  floatingLabelBehavior: FloatingLabelBehavior
+                                      .never, // Label does not float
                                   border: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                  errorStyle: kRegularTextStyle.copyWith(
-                                      color: Colors.red),
                                 ),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -263,9 +218,6 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                               ),
                               SizedBox(height: 16),
                               TextFormField(
-                                controller: _phoneController,
-                                cursorColor: Colors.black,
-                                style: kRegularTextStyle,
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -274,19 +226,23 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                                   hintText: 'For a swift response',
                                   hintStyle: kRegularTextStyle.copyWith(
                                       color: Colors.grey.shade700),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
+                                  floatingLabelBehavior: FloatingLabelBehavior
+                                      .never, // Label does not float
                                   border: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                  errorStyle: kRegularTextStyle.copyWith(
-                                      color: Colors.red),
                                 ),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -300,11 +256,8 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                               ),
                               SizedBox(height: 16),
                               TextFormField(
-                                controller: _messageController,
-                                cursorColor: Colors.black,
                                 maxLines: 4,
                                 textAlignVertical: TextAlignVertical.center,
-                                style: kRegularTextStyle,
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -314,35 +267,48 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                                       'Share your vision, let us know how we can assist.',
                                   hintStyle: kRegularTextStyle.copyWith(
                                       color: Colors.grey.shade700),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
+                                  floatingLabelBehavior: FloatingLabelBehavior
+                                      .never, // Label does not float
                                   border: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                  errorStyle: kRegularTextStyle.copyWith(
-                                      color: Colors.red),
                                 ),
                               ),
                               SizedBox(height: 16),
                               SizedBox(
                                 width: double.infinity,
-                                height: 40,
+                                height:
+                                    40, // Set the height to match the text fields
                                 child: ElevatedButton(
-                                  onPressed: _submitForm,
+                                  onPressed: () {
+                                    if (_formKey.currentState?.validate() ==
+                                        true) {
+                                      // Handle send button press
+                                    }
+                                  },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFF6248FF),
+                                    backgroundColor: Color(
+                                        0xFF6248FF), // Set button color to purple
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(
+                                          8), // Match text field border radius
                                     ),
                                   ),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment
+                                        .center, // Center the content
                                     children: [
                                       Text(
                                         'Send',
