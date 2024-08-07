@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:marquee/marquee.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Import the flutter_svg package
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:seven_assists/constants/custom_color.dart';
 import 'package:seven_assists/constants/text_style.dart';
 
@@ -15,6 +14,59 @@ class ContactUsViewWeb extends StatefulWidget {
 
 class _ContactUsViewWebState extends State<ContactUsViewWeb> {
   final _formKey = GlobalKey<FormState>();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  final _messageController = TextEditingController();
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
+    _messageController.dispose();
+    super.dispose();
+  }
+
+  void _submitForm() async {
+    if (_formKey.currentState?.validate() == true) {
+      final firstName = _firstNameController.text;
+      final lastName = _lastNameController.text;
+      final email = _emailController.text;
+      final phoneNumber = _phoneNumberController.text;
+      final message = _messageController.text;
+
+      // Save data to Firestore
+      await FirebaseFirestore.instance.collection('clients').add({
+        'firstName': firstName,
+        'lastName': lastName,
+        'email': email,
+        'phoneNumber': phoneNumber,
+        'message': message,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+
+      // Clear the form
+      _formKey.currentState?.reset();
+      _firstNameController.clear();
+      _lastNameController.clear();
+      _emailController.clear();
+      _phoneNumberController.clear();
+      _messageController.clear();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Thank you for contacting us!',
+            style: kRegularTextStyle,
+          ),
+          backgroundColor: Colors.greenAccent.withOpacity(0.8),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +159,10 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                                 children: [
                                   Expanded(
                                     child: TextFormField(
+                                      controller: _firstNameController,
+                                      style: kRegularTextStyle,
+                                      cursorColor: Colors.black,
+                                      cursorHeight: 20,
                                       decoration: InputDecoration(
                                         filled: true,
                                         fillColor: Colors.grey[200],
@@ -142,6 +198,10 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                                   SizedBox(width: 16),
                                   Expanded(
                                     child: TextFormField(
+                                      controller: _lastNameController,
+                                      style: kRegularTextStyle,
+                                      cursorColor: Colors.black,
+                                      cursorHeight: 20,
                                       decoration: InputDecoration(
                                         filled: true,
                                         fillColor: Colors.grey[200],
@@ -178,6 +238,10 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                               ),
                               SizedBox(height: 16),
                               TextFormField(
+                                controller: _emailController,
+                                style: kRegularTextStyle,
+                                cursorColor: Colors.black,
+                                cursorHeight: 20,
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -218,6 +282,10 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                               ),
                               SizedBox(height: 16),
                               TextFormField(
+                                controller: _phoneNumberController,
+                                style: kRegularTextStyle,
+                                cursorColor: Colors.black,
+                                cursorHeight: 20,
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -256,6 +324,10 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                               ),
                               SizedBox(height: 16),
                               TextFormField(
+                                controller: _messageController,
+                                style: kRegularTextStyle,
+                                cursorColor: Colors.black,
+                                cursorHeight: 20,
                                 maxLines: 4,
                                 textAlignVertical: TextAlignVertical.center,
                                 decoration: InputDecoration(
@@ -292,12 +364,7 @@ class _ContactUsViewWebState extends State<ContactUsViewWeb> {
                                 height:
                                     40, // Set the height to match the text fields
                                 child: ElevatedButton(
-                                  onPressed: () {
-                                    if (_formKey.currentState?.validate() ==
-                                        true) {
-                                      // Handle send button press
-                                    }
-                                  },
+                                  onPressed: _submitForm,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(
                                         0xFF6248FF), // Set button color to purple
