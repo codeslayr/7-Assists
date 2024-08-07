@@ -18,26 +18,34 @@ class _ParentViewMobileState extends State<ParentViewMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: WhitebackgroundCustomcolor,
-        title: Text(
-          '7 ASSISTS',
-          style: kMainHeadingTextStyle,
-          textAlign: TextAlign.center,
-        ),
-        centerTitle: true, // Center the title
-        elevation: 0, // Remove the shadow under the AppBar
-        surfaceTintColor: WhitebackgroundCustomcolor,
-      ),
-      body: ListView(
-        children: [
-          const HomeViewMobile(),
-          const EmpowerViewMobile(),
-          const PortfolioViewMobile(),
-          // AboutUsViewMobile(),
-          const ContactUsViewMobile(),
-          const FooterViewMobile(),
-          // Add more pages here
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: WhitebackgroundCustomcolor,
+            title: Text(
+              '7 ASSISTS',
+              style: kMainHeadingTextStyle,
+              textAlign: TextAlign.center,
+            ),
+            centerTitle: true,
+            elevation: 0,
+            surfaceTintColor: WhitebackgroundCustomcolor,
+            floating: false,
+            pinned: false,
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                const HomeViewMobile(),
+                const EmpowerViewMobile(),
+                const PortfolioViewMobile(),
+                // AboutUsViewMobile(),
+                const ContactUsViewMobile(),
+                const FooterViewMobile(),
+                // Add more pages here
+              ],
+            ),
+          ),
         ],
       ),
     );
