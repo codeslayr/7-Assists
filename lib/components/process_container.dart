@@ -1,6 +1,7 @@
+import 'package:assists_landing/constants/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:seven_assists/constants/text_style.dart';
+
 
 class ProcessContainer extends StatelessWidget {
   final String icon;

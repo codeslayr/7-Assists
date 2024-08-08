@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:seven_assists/screens/mobile_view/parent_veiw_mobile.dart';
-import 'package:seven_assists/screens/web_view/parent_veiw_web.dart';
+import 'package:assists_landing/screens/mobile_view/parent_veiw_mobile.dart';
+import 'package:assists_landing/screens/web_view/parent_veiw_web.dart';
 
 class ParentView extends StatefulWidget {
   const ParentView({super.key});

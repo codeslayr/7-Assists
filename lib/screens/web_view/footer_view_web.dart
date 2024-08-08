@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:seven_assists/constants/custom_color.dart';
-import 'package:seven_assists/constants/text_style.dart';
+import 'package:assists_landing/constants/custom_color.dart';
+import 'package:assists_landing/constants/text_style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FooterViewWeb extends StatelessWidget {

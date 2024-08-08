@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:seven_assists/screens/mobile_view/home_veiw_mobile.dart';
-import 'package:seven_assists/screens/web_view/home_veiw_web.dart';
+import 'package:assists_landing/screens/mobile_view/home_veiw_mobile.dart';
+import 'package:assists_landing/screens/web_view/home_veiw_web.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:seven_assists/constants/custom_color.dart';
-import 'package:seven_assists/constants/text_style.dart';
-import 'package:seven_assists/screens/web_view/contact_us_view_web.dart';
-import 'package:seven_assists/screens/web_view/empower_view_web.dart';
-import 'package:seven_assists/screens/web_view/footer_view_web.dart';
-import 'package:seven_assists/screens/web_view/home_veiw_web.dart';
-import 'package:seven_assists/screens/web_view/portfolio_view_web.dart';
+import 'package:assists_landing/constants/custom_color.dart';
+import 'package:assists_landing/constants/text_style.dart';
+import 'package:assists_landing/screens/web_view/contact_us_view_web.dart';
+import 'package:assists_landing/screens/web_view/empower_view_web.dart';
+import 'package:assists_landing/screens/web_view/footer_view_web.dart';
+import 'package:assists_landing/screens/web_view/home_veiw_web.dart';
+import 'package:assists_landing/screens/web_view/portfolio_view_web.dart';
 
 class ParentViewWeb extends StatefulWidget {
   const ParentViewWeb({super.key});

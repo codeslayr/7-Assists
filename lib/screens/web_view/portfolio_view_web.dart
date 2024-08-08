@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:seven_assists/constants/custom_color.dart';
-import 'package:seven_assists/constants/text_style.dart';
+import 'package:assists_landing/constants/custom_color.dart';
+import 'package:assists_landing/constants/text_style.dart';
 
 class PortfolioViewWeb extends StatefulWidget {
   const PortfolioViewWeb({super.key});

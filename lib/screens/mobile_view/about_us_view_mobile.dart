@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:seven_assists/components/process_container.dart';
-import 'package:seven_assists/constants/custom_color.dart';
-import 'package:seven_assists/constants/text_style.dart';
+import 'package:assists_landing/components/process_container.dart';
+import 'package:assists_landing/constants/custom_color.dart';
+import 'package:assists_landing/constants/text_style.dart';
 
 class AboutUsViewMobile extends StatelessWidget {
   const AboutUsViewMobile({super.key});

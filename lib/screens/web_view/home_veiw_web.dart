@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:seven_assists/constants/custom_color.dart';
-import 'package:seven_assists/constants/text_style.dart';
+import 'package:assists_landing/constants/custom_color.dart';
+import 'package:assists_landing/constants/text_style.dart';
 
 class HomeVeiwWeb extends StatelessWidget {
   const HomeVeiwWeb({super.key});
@@ -109,7 +109,7 @@ class HomeVeiwWeb extends StatelessWidget {
                 ),
                 Container(
                   // width: screenWidth * 0.4,
-                  height: screenHeight * 0.8,
+                  height: screenHeight * 0.9,
                   child: LazyLottie(),
                 ),
               ],

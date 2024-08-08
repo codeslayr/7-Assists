@@ -1,4 +1,4 @@
-# seven_assists
+# assists_landing
 
 A new Flutter project.
 

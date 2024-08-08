@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:seven_assists/constants/custom_color.dart';
-import 'package:seven_assists/constants/text_style.dart';
+import 'package:assists_landing/constants/custom_color.dart';
+import 'package:assists_landing/constants/text_style.dart';
 
 class EmpowerViewWeb extends StatelessWidget {
   const EmpowerViewWeb({super.key});

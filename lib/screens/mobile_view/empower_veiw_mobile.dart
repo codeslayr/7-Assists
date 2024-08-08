@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:seven_assists/constants/custom_color.dart';
-import 'package:seven_assists/constants/text_style.dart';
+import 'package:assists_landing/constants/custom_color.dart';
+import 'package:assists_landing/constants/text_style.dart';
 
 class EmpowerViewMobile extends StatelessWidget {
   const EmpowerViewMobile({super.key});
@@ -56,45 +56,49 @@ class EmpowerViewMobile extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: screenHeight / 20,
+                height: screenHeight / 8,
               ),
               Column(
                 children: [
-                  Stack(
-                    children: [
-                      Positioned(
-                        top: 100,
-                        left: 6,
-                        height: 70,
-                        width: 72,
-                        child: Image.asset(
-                          "assets/images/rectangle.png",
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: screenWidth / 10),
-                        child: Container(
-                          padding: EdgeInsets.only(top: screenHeight / 8),
-                          width: 400,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Professional Club Website",
-                                style: mSectionHeadingTextStyle,
-                              ),
-                              SizedBox(
-                                height: 16,
-                              ),
-                              Text(
-                                "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
-                                style: kSectionSubheadingTextStyle,
-                              ),
-                            ],
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: screenWidth / 10,
+                      right: screenWidth / 10,
+                    ),
+                    child: Container(
+                      // width: 400,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            height: 70,
+                            width: 72,
+                            child: Image.asset(
+                              "assets/images/rectangle.png",
+                            ),
                           ),
-                        ),
+                          Container(
+                            padding:
+                                EdgeInsets.only(left: 38, top: 15, right: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Professional Club Website",
+                                  style: mSectionHeadingTextStyle,
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                Text(
+                                  "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
+                                  style: kSectionSubheadingTextStyle,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                   SizedBox(
                     height: screenHeight / 40,
@@ -107,41 +111,48 @@ class EmpowerViewMobile extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Stack(
-                    children: [
-                      Positioned(
-                        top: 100,
-                        left: 6,
-                        height: 70,
-                        width: 72,
-                        child: Image.asset(
-                          "assets/images/rectangle.png",
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: screenWidth / 10),
-                        child: Container(
-                          padding: EdgeInsets.only(top: screenHeight / 8),
-                          width: 400,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Social Media Designs",
-                                style: mSectionHeadingTextStyle,
-                              ),
-                              SizedBox(
-                                height: 16,
-                              ),
-                              Text(
-                                "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
-                                style: kSectionSubheadingTextStyle,
-                              ),
-                            ],
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: screenWidth / 10,
+                      right: screenWidth / 10,
+                    ),
+                    child: Container(
+                      width: 400,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            height: 70,
+                            width: 72,
+                            child: Image.asset(
+                              "assets/images/rectangle.png",
+                            ),
                           ),
-                        ),
+                          Container(
+                            padding:
+                                EdgeInsets.only(left: 38, top: 15, right: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Social Media Post Design",
+                                  style: mSectionHeadingTextStyle,
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                Text(
+                                  "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
+                                  style: kSectionSubheadingTextStyle,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: screenHeight / 40,
                   ),
                   Container(
                     width: double.infinity,
