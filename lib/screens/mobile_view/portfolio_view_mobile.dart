@@ -1,5 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:assists_landing/constants/custom_color.dart';
 import 'package:assists_landing/constants/text_style.dart';
@@ -12,7 +12,8 @@ class PortfolioViewMobile extends StatefulWidget {
 }
 
 class _PortfolioViewMobileState extends State<PortfolioViewMobile> {
-  final CarouselController _carouselController = CarouselController();
+  final CarouselSliderController _carouselController =
+      CarouselSliderController();
   int _currentIndex = 0;
 
   @override

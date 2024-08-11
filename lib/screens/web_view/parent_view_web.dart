@@ -4,7 +4,7 @@ import 'package:assists_landing/constants/text_style.dart';
 import 'package:assists_landing/screens/web_view/contact_us_view_web.dart';
 import 'package:assists_landing/screens/web_view/empower_view_web.dart';
 import 'package:assists_landing/screens/web_view/footer_view_web.dart';
-import 'package:assists_landing/screens/web_view/home_veiw_web.dart';
+import 'package:assists_landing/screens/web_view/home_view_web.dart';
 import 'package:assists_landing/screens/web_view/portfolio_view_web.dart';
 
 class ParentViewWeb extends StatefulWidget {
@@ -139,7 +139,7 @@ class _ParentViewWebState extends State<ParentViewWeb> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    HomeVeiwWeb(key: _homeKey),
+                    HomeViewWeb(key: _homeKey),
                     EmpowerViewWeb(key: _empowerKey),
                     PortfolioViewWeb(key: _portfolioKey),
                     // AboutUsViewWeb(key: _aboutKey),

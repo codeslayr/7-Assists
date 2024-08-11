@@ -4,7 +4,7 @@ import 'package:assists_landing/constants/text_style.dart';
 import 'package:assists_landing/screens/mobile_view/contact_us_view_mobile.dart';
 import 'package:assists_landing/screens/mobile_view/empower_veiw_mobile.dart';
 import 'package:assists_landing/screens/mobile_view/footer_view_mobile.dart';
-import 'package:assists_landing/screens/mobile_view/home_veiw_mobile.dart';
+import 'package:assists_landing/screens/mobile_view/home_view_mobile.dart';
 import 'package:assists_landing/screens/mobile_view/portfolio_view_mobile.dart';
 
 class ParentViewMobile extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:assists_landing/screens/mobile_view/home_veiw_mobile.dart';
-import 'package:assists_landing/screens/web_view/home_veiw_web.dart';
+import 'package:assists_landing/screens/mobile_view/home_view_mobile.dart';
+import 'package:assists_landing/screens/web_view/home_view_web.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -16,9 +16,9 @@ class _HomeViewState extends State<HomeView> {
       if (constraints.maxWidth < 600) {
         return HomeViewMobile();
       } else if (constraints.maxWidth < 900) {
-        return HomeVeiwWeb();
+        return HomeViewWeb();
       } else {
-        return HomeVeiwWeb();
+        return HomeViewWeb();
       }
     });
   }
