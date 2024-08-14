@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:assists_landing/constants/custom_color.dart';
 import 'package:assists_landing/constants/text_style.dart';
 
 class HomeViewWeb extends StatelessWidget {
-  const HomeViewWeb({super.key});
+  final VoidCallback scrollToContact; // Add this parameter
+
+  const HomeViewWeb({
+    super.key,
+    required this.scrollToContact, // Add this parameter
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +51,7 @@ class HomeViewWeb extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 50),
+                          padding: const EdgeInsets.only(left: 50),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -54,11 +60,12 @@ class HomeViewWeb extends StatelessWidget {
                                 text: TextSpan(
                                   style: kSectionHeadingTextStyle,
                                   children: [
-                                    TextSpan(text: "Improving Football Clubs "),
+                                    const TextSpan(
+                                        text: "Improving Football Clubs "),
                                     WidgetSpan(
                                       child: ShaderMask(
                                         shaderCallback: (bounds) {
-                                          return LinearGradient(
+                                          return const LinearGradient(
                                             colors: [
                                               Color(0xFFFF7448),
                                               Color(0xFFFF4848),
@@ -76,34 +83,53 @@ class HomeViewWeb extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    TextSpan(text: ",\n1 Club at a time!"),
+                                    const TextSpan(
+                                        text: ",\n1 Club at a time!"),
                                   ],
                                 ),
                               ),
                               SizedBox(height: screenHeight / 40),
                               Text(
                                 "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
-                                style: kSectionSubheadingTextStyle,
+                                style: kSectionSubheadingTextStyle.copyWith(
+                                    fontFamily: 'Inter'),
                               ),
                               SizedBox(height: screenHeight / 60),
                               Container(
+                                width: 180,
+                                height: 40,
                                 decoration: BoxDecoration(
-                                  color: Colors.black,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: TextButton.icon(
-                                  onPressed: () {
-                                    // Your onPressed function here
-                                  },
-                                  icon: Icon(
-                                    Icons.chat,
-                                    size: 16,
-                                    color: Colors.white,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Colors.black, // Background color
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                   ),
-                                  label: Text(
-                                    "Get Started",
-                                    style: kSectionSubheadingTextStyle.copyWith(
-                                        color: Colors.white),
+                                  onPressed:
+                                      scrollToContact, // Use the callback here
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          'assets/images/message.svg',
+                                          color: Colors.white,
+                                          height: 16,
+                                          width: 16,
+                                        ),
+                                        const SizedBox(
+                                            width:
+                                                8), // Add space between icon and text
+                                        Text(
+                                          "Get Started",
+                                          style: kSectionSubheadingTextStyle
+                                              .copyWith(color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -115,7 +141,6 @@ class HomeViewWeb extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  // width: screenWidth * 0.4,
                   height: screenHeight * 0.9,
                   child: LazyLottie(),
                 ),

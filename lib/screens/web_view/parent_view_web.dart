@@ -6,6 +6,7 @@ import 'package:assists_landing/screens/web_view/empower_view_web.dart';
 import 'package:assists_landing/screens/web_view/footer_view_web.dart';
 import 'package:assists_landing/screens/web_view/home_view_web.dart';
 import 'package:assists_landing/screens/web_view/portfolio_view_web.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ParentViewWeb extends StatefulWidget {
   const ParentViewWeb({super.key});
@@ -25,8 +26,11 @@ class _ParentViewWebState extends State<ParentViewWeb> {
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext;
     if (context != null) {
-      Scrollable.ensureVisible(context,
-          duration: Duration(seconds: 1), curve: Curves.easeInOut);
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(seconds: 1),
+        curve: Curves.easeInOut,
+      );
     }
   }
 
@@ -63,16 +67,15 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                             case 2:
                               _scrollToSection(_portfolioKey);
                               break;
-
                             case 3:
                               _scrollToSection(_contactKey);
                               break;
                           }
                         },
                         indicatorColor: Colors.black,
-                        dividerColor: Colors.transparent,
                         labelColor: Colors.blue,
                         unselectedLabelColor: Colors.black,
+                        dividerColor: Colors.transparent,
                         tabs: [
                           Tab(
                             child: Text(
@@ -110,23 +113,38 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                       ),
                     ),
                     Container(
+                      width: 180,
+                      height: 40,
                       decoration: BoxDecoration(
-                        color: Colors.black,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: TextButton.icon(
-                        onPressed: () {
-                          // Your onPressed function here
-                        },
-                        icon: Icon(
-                          Icons.chat,
-                          size: 16,
-                          color: Colors.white,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
-                        label: Text(
-                          "Get Started",
-                          style: kSectionSubheadingTextStyle.copyWith(
-                              color: Colors.white),
+                        onPressed: () {
+                          _scrollToSection(_contactKey);
+                        },
+                        child: Center(
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                'assets/images/message.svg',
+                                color: Colors.white,
+                                height: 16,
+                                width: 16,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                "Get Started",
+                                style: kSectionSubheadingTextStyle.copyWith(
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -139,12 +157,21 @@ class _ParentViewWebState extends State<ParentViewWeb> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    HomeViewWeb(key: _homeKey),
+                    HomeViewWeb(
+                      key: _homeKey,
+                      scrollToContact: () => _scrollToSection(_contactKey),
+                    ),
                     EmpowerViewWeb(key: _empowerKey),
                     PortfolioViewWeb(key: _portfolioKey),
-                    // AboutUsViewWeb(key: _aboutKey),
                     ContactUsViewWeb(key: _contactKey),
-                    FooterViewWeb(key: _footerKey),
+                    FooterViewWeb(
+                      key: _footerKey,
+                      onLinkPressed: _scrollToSection,
+                      homeKey: _homeKey,
+                      serviceKey: _empowerKey,
+                      portfolioKey: _portfolioKey,
+                      contactUsKey: _contactKey,
+                    ),
                   ],
                 ),
               ),

@@ -5,7 +5,20 @@ import 'package:assists_landing/constants/text_style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FooterViewWeb extends StatelessWidget {
-  const FooterViewWeb({super.key});
+  final Function(GlobalKey) onLinkPressed;
+  final GlobalKey homeKey;
+  final GlobalKey serviceKey;
+  final GlobalKey portfolioKey;
+  final GlobalKey contactUsKey;
+
+  const FooterViewWeb({
+    super.key,
+    required this.onLinkPressed,
+    required this.homeKey,
+    required this.serviceKey,
+    required this.portfolioKey,
+    required this.contactUsKey,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,27 +39,20 @@ class FooterViewWeb extends StatelessWidget {
             color: WhitebackgroundCustomcolor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildMainColumn(context),
-                    SizedBox(
-                      width: screenWidth / 20,
-                    ),
+                    SizedBox(width: screenWidth / 20),
                     _buildLinkColumn(
                       context,
                       "Quick Links",
-                      ["Home", "Service", "Portfolio", "Contact us"],
-                    ),
-                    _buildLinkColumn(
-                      context,
-                      "Others",
                       [
-                        "Privacy Policy",
-                        "Terms & Conditions",
-                        "Legal",
+                        {"Home": homeKey},
+                        {"Service": serviceKey},
+                        {"Portfolio": portfolioKey},
+                        {"Contact us": contactUsKey},
                       ],
                     ),
                   ],
@@ -58,115 +64,123 @@ class FooterViewWeb extends StatelessWidget {
       ),
     );
   }
-}
 
-Widget _buildMainColumn(BuildContext context) {
-  final double screenHeight = MediaQuery.of(context).size.height;
+  Widget _buildMainColumn(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
 
-  return Expanded(
-    flex: 3,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        ShaderMask(
-          shaderCallback: (bounds) => LinearGradient(
-            colors: [Color(0xFF000000), Color(0xFFF1F0EE)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ).createShader(bounds),
-          child: Text(
-            "7 ASSISTS",
-            style: kSectionHeadingTextStyle.copyWith(
-              fontSize: 175,
-              letterSpacing: -12,
-              color: Colors
-                  .white, // The color here is irrelevant because the gradient will override it
-            ),
-          ),
-        ),
-        SizedBox(height: screenHeight / 14),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _buildCopyright(context, "© 2024 7 Assists. All rights reserved."),
-            Row(
-              children: [
-                _buildSocialIcon(
-                    "assets/images/X.svg", "https://x.com/7assists"),
-                _buildSocialIcon("assets/images/facebook.svg",
-                    "https://www.facebook.com/7assists/"),
-                _buildSocialIcon("assets/images/instagram.svg",
-                    "https://www.instagram.com/7assists/"),
-                _buildSocialIcon("assets/images/linkedin.svg",
-                    "https://www.linkedin.com/company/7assists"),
-              ],
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _buildSocialIcon(String assetPath, String url) {
-  return InkWell(
-    onTap: () async {
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    },
-    child: Padding(
-      padding: const EdgeInsets.only(right: 12.0),
-      child: SvgPicture.asset(
-        assetPath,
-        height: 15,
-        width: 15,
-      ),
-    ),
-  );
-}
-
-Widget _buildCopyright(BuildContext context, String copyright) {
-  return Text(
-    copyright,
-    style: kSectionSubheadingTextStyle.copyWith(
-      fontSize: 14,
-    ),
-  );
-}
-
-Widget _buildLinkColumn(
-    BuildContext context, String heading, List<String> links) {
-  final double screenHeight = MediaQuery.of(context).size.height;
-
-  return Expanded(
-    child: Padding(
-      padding: const EdgeInsets.only(top: 10),
+    return Expanded(
+      flex: 3,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            heading,
-            style: kSectionSubheadingTextStyle.copyWith(
-                fontWeight: FontWeight.bold),
+          ShaderMask(
+            shaderCallback: (bounds) => LinearGradient(
+              colors: [Color(0xFF000000), Color(0xFFF1F0EE)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ).createShader(bounds),
+            child: Text(
+              "7 ASSISTS",
+              style: kSectionHeadingTextStyle.copyWith(
+                fontSize: 175,
+                letterSpacing: -12,
+                color: Colors.white,
+              ),
+            ),
           ),
-          SizedBox(height: screenHeight / 40),
-          ...links.map((link) => Padding(
-                padding: EdgeInsets.only(bottom: screenHeight / 80),
-                child: Text(
-                  link,
-                  style: kSectionSubheadingTextStyle.copyWith(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      color: Colors.grey),
-                ),
-              )),
+          SizedBox(height: screenHeight / 14),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildCopyright(
+                  context, "© 2024 7 Assists. All rights reserved."),
+              Row(
+                children: [
+                  _buildSocialIcon(
+                      "assets/images/X.svg", "https://x.com/7assists"),
+                  _buildSocialIcon("assets/images/facebook.svg",
+                      "https://www.facebook.com/7assists/"),
+                  _buildSocialIcon("assets/images/instagram.svg",
+                      "https://www.instagram.com/7assists/"),
+                  _buildSocialIcon("assets/images/linkedin.svg",
+                      "https://www.linkedin.com/company/7assists"),
+                ],
+              ),
+            ],
+          ),
         ],
       ),
-    ),
-  );
+    );
+  }
+
+  Widget _buildSocialIcon(String assetPath, String url) {
+    return InkWell(
+      onTap: () async {
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw 'Could not launch $url';
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(right: 12.0),
+        child: SvgPicture.asset(
+          assetPath,
+          height: 15,
+          width: 15,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCopyright(BuildContext context, String copyright) {
+    return Text(
+      copyright,
+      style: kSectionSubheadingTextStyle.copyWith(
+        fontSize: 14,
+      ),
+    );
+  }
+
+  Widget _buildLinkColumn(BuildContext context, String heading,
+      List<Map<String, GlobalKey>> links) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              heading,
+              style: kSectionSubheadingTextStyle.copyWith(
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: screenHeight / 40),
+            ...links.map((link) {
+              final entry = link.entries.first;
+              final linkText = entry.key;
+              final linkKey = entry.value;
+              return Padding(
+                padding: EdgeInsets.only(bottom: screenHeight / 80),
+                child: InkWell(
+                  onTap: () => onLinkPressed(linkKey),
+                  child: Text(
+                    linkText,
+                    style: kSectionSubheadingTextStyle.copyWith(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        color: Colors.grey),
+                  ),
+                ),
+              );
+            }).toList(),
+          ],
+        ),
+      ),
+    );
+  }
 }

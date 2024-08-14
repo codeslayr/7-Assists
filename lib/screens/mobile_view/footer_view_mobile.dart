@@ -5,7 +5,20 @@ import 'package:assists_landing/constants/text_style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FooterViewMobile extends StatelessWidget {
-  const FooterViewMobile({super.key});
+  final Function(GlobalKey) onLinkPressed;
+  final GlobalKey homeKey;
+  final GlobalKey serviceKey;
+  final GlobalKey portfolioKey;
+  final GlobalKey contactUsKey;
+
+  const FooterViewMobile({
+    super.key,
+    required this.onLinkPressed,
+    required this.homeKey,
+    required this.serviceKey,
+    required this.portfolioKey,
+    required this.contactUsKey,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +39,6 @@ class FooterViewMobile extends StatelessWidget {
                 horizontal: screenWidth / 40, vertical: screenHeight / 20),
             color: WhitebackgroundCustomcolor,
             width: screenWidth,
-            // height: screenHeight,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -35,12 +47,12 @@ class FooterViewMobile extends StatelessWidget {
                 _buildLinkColumn(
                   context,
                   "Quick Links",
-                  ["Home", "Service", "Portfolio", "Contact us"],
-                ),
-                _buildLinkColumn(
-                  context,
-                  "Others",
-                  ["Privacy Policy", "Terms & Conditions", "Legal"],
+                  [
+                    {"Home": homeKey},
+                    {"Service": serviceKey},
+                    {"Portfolio": portfolioKey},
+                    {"Contact us": contactUsKey},
+                  ],
                 ),
                 SizedBox(height: screenHeight / 14),
                 Column(
@@ -88,8 +100,7 @@ class FooterViewMobile extends StatelessWidget {
             style: kSectionHeadingTextStyle.copyWith(
               letterSpacing: -7,
               fontSize: 85,
-              color: Colors
-                  .white, // The color here is irrelevant because the gradient will override it
+              color: Colors.white,
             ),
           ),
         ),
@@ -131,8 +142,8 @@ class FooterViewMobile extends StatelessWidget {
     );
   }
 
-  Widget _buildLinkColumn(
-      BuildContext context, String heading, List<String> links) {
+  Widget _buildLinkColumn(BuildContext context, String heading,
+      List<Map<String, GlobalKey>> links) {
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return Padding(
@@ -148,12 +159,19 @@ class FooterViewMobile extends StatelessWidget {
           SizedBox(height: screenHeight / 40),
           ...links.map((link) => Padding(
                 padding: EdgeInsets.only(bottom: screenHeight / 80),
-                child: Text(
-                  link,
-                  style: kSectionSubheadingTextStyle.copyWith(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      color: Colors.grey),
+                child: InkWell(
+                  onTap: () {
+                    print(
+                        'Link pressed: ${link.keys.first}'); // Debugging output
+                    onLinkPressed(link.values.first);
+                  },
+                  child: Text(
+                    link.keys.first,
+                    style: kSectionSubheadingTextStyle.copyWith(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        color: Colors.grey),
+                  ),
                 ),
               )),
         ],

@@ -26,7 +26,7 @@ class _PortfolioViewMobileState extends State<PortfolioViewMobile> {
         padding: EdgeInsets.symmetric(
             horizontal: screenWidth / 40, vertical: screenHeight / 90),
         color: WhitebackgroundCustomcolor,
-        height: screenHeight,
+        height: screenHeight * 1.6,
         width: screenWidth,
         child: Column(
           children: [
@@ -133,6 +133,7 @@ class _PortfolioViewMobileState extends State<PortfolioViewMobile> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 4,
                 crossAxisSpacing: 4,
+                physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) => Container(
                   child: Image.asset(
                     "assets/images/p${index + 1}.png",

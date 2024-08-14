@@ -14,11 +14,17 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (builder, constraints) {
       if (constraints.maxWidth < 600) {
-        return HomeViewMobile();
+        return HomeViewMobile(
+          onGetStartedPressed: () {},
+        );
       } else if (constraints.maxWidth < 900) {
-        return HomeViewWeb();
+        return HomeViewWeb(
+          scrollToContact: () {},
+        );
       } else {
-        return HomeViewWeb();
+        return HomeViewWeb(
+          scrollToContact: () {},
+        );
       }
     });
   }

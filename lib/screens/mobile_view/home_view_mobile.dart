@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:assists_landing/constants/custom_color.dart';
 import 'package:assists_landing/constants/text_style.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:video_player/video_player.dart';
 
 class HomeViewMobile extends StatefulWidget {
-  const HomeViewMobile({super.key});
+  final VoidCallback onGetStartedPressed;
+
+  const HomeViewMobile({required this.onGetStartedPressed, super.key});
 
   @override
   _HomeViewMobileState createState() => _HomeViewMobileState();
@@ -111,18 +114,40 @@ class _HomeViewMobileState extends State<HomeViewMobile> {
                             ),
                             SizedBox(height: screenHeight / 40),
                             Container(
+                              width: 170,
+                              height: 40,
                               decoration: BoxDecoration(
-                                color: Colors.black,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: TextButton(
-                                onPressed: () {
-                                  // Your onPressed function here
-                                },
-                                child: Text(
-                                  "Get Started",
-                                  style: kSectionSubheadingTextStyle.copyWith(
-                                      color: Colors.white),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Colors.black, // Background color
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                onPressed: widget
+                                    .onGetStartedPressed, // Trigger the scroll
+                                child: Center(
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/images/message.svg',
+                                        color: Colors.white,
+                                        height: 16,
+                                        width: 16,
+                                      ),
+                                      const SizedBox(
+                                          width:
+                                              8), // Add space between icon and text
+                                      Text(
+                                        "Get Started",
+                                        style: kSectionSubheadingTextStyle
+                                            .copyWith(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

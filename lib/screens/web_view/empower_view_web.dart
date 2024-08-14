@@ -88,7 +88,8 @@ class EmpowerViewWeb extends StatelessWidget {
                                   ),
                                   Text(
                                     "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
-                                    style: kSectionSubheadingTextStyle,
+                                    style: kSectionSubheadingTextStyle.copyWith(
+                                        fontFamily: 'Inter'),
                                   ),
                                 ],
                               ),
@@ -137,7 +138,8 @@ class EmpowerViewWeb extends StatelessWidget {
                                   ),
                                   Text(
                                     "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
-                                    style: kSectionSubheadingTextStyle,
+                                    style: kSectionSubheadingTextStyle.copyWith(
+                                        fontFamily: 'Inter'),
                                   ),
                                 ],
                               ),
