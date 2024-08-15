@@ -20,6 +20,7 @@ class _ParentViewMobileState extends State<ParentViewMobile> {
   final GlobalKey _serviceKey = GlobalKey();
   final GlobalKey _portfolioKey = GlobalKey();
   final GlobalKey _contactUsKey = GlobalKey();
+  final GlobalKey _footerKey = GlobalKey();
 
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext;
@@ -55,23 +56,33 @@ class _ParentViewMobileState extends State<ParentViewMobile> {
             floating: false,
             pinned: false,
           ),
+          SliverToBoxAdapter(
+            key: _homeKey,
+            child: HomeViewMobile(
+              onGetStartedPressed: () => _scrollToSection(_contactUsKey),
+            ),
+          ),
+          SliverToBoxAdapter(
+              key: _serviceKey,
+            child: EmpowerViewMobile()),
+          SliverToBoxAdapter(
+            child: PortfolioViewMobile(key: _portfolioKey)),
+          SliverToBoxAdapter(
+            child: ContactUsViewMobile(key: _contactUsKey)),
+          SliverToBoxAdapter(
+            child: FooterViewMobile(
+              onLinkPressed: _scrollToSection,
+              homeKey: _homeKey,
+              serviceKey: _serviceKey,
+              portfolioKey: _portfolioKey,
+              contactUsKey: _contactUsKey,
+            ),
+          ),
           SliverList(
+            key: GlobalKey(),
             delegate: SliverChildListDelegate(
               [
-                HomeViewMobile(
-                  key: _homeKey,
-                  onGetStartedPressed: () => _scrollToSection(_contactUsKey),
-                ),
-                EmpowerViewMobile(key: _serviceKey),
-                PortfolioViewMobile(key: _portfolioKey),
-                ContactUsViewMobile(key: _contactUsKey),
-                FooterViewMobile(
-                  onLinkPressed: _scrollToSection,
-                  homeKey: _homeKey,
-                  serviceKey: _serviceKey,
-                  portfolioKey: _portfolioKey,
-                  contactUsKey: _contactUsKey,
-                ),
+                
               ],
             ),
           ),

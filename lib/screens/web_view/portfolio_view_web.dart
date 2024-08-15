@@ -1,3 +1,4 @@
+import 'package:assists_landing/constants/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:assists_landing/constants/custom_color.dart';
@@ -51,7 +52,7 @@ class _PortfolioViewWebState extends State<PortfolioViewWeb> {
             ),
             const SizedBox(height: 50),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth / 10),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth / 25),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.black,
@@ -62,21 +63,12 @@ class _PortfolioViewWebState extends State<PortfolioViewWeb> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CarouselSlider(
-                      items: [
-                        Image.asset(
-                          "assets/images/portfolio2.png",
-                          fit: BoxFit.contain,
-                        ),
-                        Image.asset("assets/images/portfolio2.png",
-                            fit: BoxFit.contain),
-                        Image.asset("assets/images/portfolio2.png",
-                            fit: BoxFit.contain),
-                      ],
+                      items: carouselImages,
                       carouselController: _carouselController,
                       options: CarouselOptions(
                         height: screenHeight * 0.7,
                         viewportFraction: 1.0,
-                        autoPlay: false,
+                        autoPlay: true,
                         enlargeCenterPage: false,
                         onPageChanged: (index, reason) {
                           setState(() {

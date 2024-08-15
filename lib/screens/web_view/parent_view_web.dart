@@ -10,7 +10,6 @@ import 'package:flutter_svg/svg.dart';
 
 class ParentViewWeb extends StatefulWidget {
   const ParentViewWeb({super.key});
-
   @override
   State<ParentViewWeb> createState() => _ParentViewWebState();
 }
@@ -54,7 +53,7 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                       style: kMainHeadingTextStyle,
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.3,
                       child: TabBar(
                         onTap: (index) {
                           switch (index) {
@@ -78,6 +77,7 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                         dividerColor: Colors.transparent,
                         tabs: [
                           Tab(
+                            iconMargin: EdgeInsets.zero,
                             child: Text(
                               "Home",
                               style: kSectionSubheadingTextStyle.copyWith(
@@ -95,7 +95,7 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                           ),
                           Tab(
                             child: Text(
-                              "Our Work",
+                              "Work",
                               style: kSectionSubheadingTextStyle.copyWith(
                                 decoration: TextDecoration.none,
                               ),
@@ -103,7 +103,7 @@ class _ParentViewWebState extends State<ParentViewWeb> {
                           ),
                           Tab(
                             child: Text(
-                              "Contact us",
+                              "Contact",
                               style: kSectionSubheadingTextStyle.copyWith(
                                 decoration: TextDecoration.none,
                               ),

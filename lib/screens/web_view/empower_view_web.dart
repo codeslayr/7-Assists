@@ -41,7 +41,7 @@ class EmpowerViewWeb extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: screenHeight / 40,
+                height: screenHeight / 10,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: screenWidth / 20),
@@ -49,19 +49,20 @@ class EmpowerViewWeb extends StatelessWidget {
                   'Solutions that Fit Your Budget and Needs. We understand the challenges faced by tier 3 or low-level clubs with limited resources. Our website development and social media post designing service is tailored to address your pain points while ensuring affordability and quality. With us, you can enhance your online presence without breaking the bank.',
                   textAlign: TextAlign.justify,
                   style: kSectionSubheadingTextStyle.copyWith(
-                      letterSpacing: -2,
-                      fontSize: 30,
+                      letterSpacing: -1.4,
+                      fontSize: 46,
+                      wordSpacing: 2,
                       fontWeight: FontWeight.w400),
                 ),
               ),
               SizedBox(
-                height: screenHeight / 20,
+                height: screenHeight / 10,
               ),
               Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: screenWidth / 10),
+                      padding: EdgeInsets.only(left: screenWidth / 20),
                       child: Container(
                         width: 400,
                         child: Stack(
@@ -75,7 +76,7 @@ class EmpowerViewWeb extends StatelessWidget {
                             ),
                             Container(
                               padding:
-                                  EdgeInsets.only(left: 50, top: 30, right: 60),
+                                  EdgeInsets.only(left: 50, top: 30, right: 80),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -87,10 +88,11 @@ class EmpowerViewWeb extends StatelessWidget {
                                     height: 16,
                                   ),
                                   Text(
-                                    "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
+                                    "Clean & Purposeful website built to showcase fixtures, upcoming matches, players stats, sponsors, in a better way.",
                                     style: kSectionSubheadingTextStyle.copyWith(
                                         fontFamily: 'Inter'),
                                   ),
+                                  SizedBox(height: 70,)
                                 ],
                               ),
                             ),
@@ -111,7 +113,7 @@ class EmpowerViewWeb extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: screenWidth / 10),
+                      padding: EdgeInsets.only(left: screenWidth / 20),
                       child: Container(
                         width: 400,
                         child: Stack(
@@ -125,7 +127,7 @@ class EmpowerViewWeb extends StatelessWidget {
                             ),
                             Container(
                               padding:
-                                  EdgeInsets.only(left: 50, top: 30, right: 60),
+                                  EdgeInsets.only(left: 50, top: 30, right: 80),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

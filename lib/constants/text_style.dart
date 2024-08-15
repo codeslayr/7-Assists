@@ -18,6 +18,8 @@ const TextStyle mSectionHeadingTextStyle = TextStyle(
     fontSize: 40,
     fontFamily: 'Relative',
     color: Colors.black,
+    letterSpacing: -2,
+    height: 1.1,
     fontWeight: FontWeight.w600);
 
 const TextStyle kSectionSubheadingTextStyle = TextStyle(

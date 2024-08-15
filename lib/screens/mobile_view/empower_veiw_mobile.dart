@@ -62,8 +62,8 @@ class EmpowerViewMobile extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                      left: screenWidth / 10,
-                      right: screenWidth / 10,
+                      left: screenWidth / 25,
+                      right: screenWidth / 25,
                     ),
                     child: Container(
                       // width: 400,
@@ -78,7 +78,7 @@ class EmpowerViewMobile extends StatelessWidget {
                           ),
                           Container(
                             padding:
-                                EdgeInsets.only(left: 38, top: 15, right: 10),
+                                EdgeInsets.only(left:30 ,top: 15, ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -90,7 +90,7 @@ class EmpowerViewMobile extends StatelessWidget {
                                   height: 16,
                                 ),
                                 Text(
-                                  "Weekly scheduled post designs, maintained professional website to help you be the best in your league!",
+                                  "Clean & Purposeful website built to showcase fixtures, upcoming matches, players stats, sponsors, in a better way.",
                                   style: kSectionSubheadingTextStyle.copyWith(
                                       fontFamily: 'Inter'),
                                 ),
@@ -114,11 +114,10 @@ class EmpowerViewMobile extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                      left: screenWidth / 10,
-                      right: screenWidth / 10,
+                      left: screenWidth / 25,
+                      right: screenWidth / 25,
                     ),
                     child: Container(
-                      width: 400,
                       child: Stack(
                         children: [
                           Positioned(
@@ -130,7 +129,7 @@ class EmpowerViewMobile extends StatelessWidget {
                           ),
                           Container(
                             padding:
-                                EdgeInsets.only(left: 38, top: 15, right: 10),
+                                EdgeInsets.only(left:30 ,top: 15, ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
